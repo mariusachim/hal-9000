@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import type.AuthTuple;
 
 public class AlphanumericTest {
 
@@ -22,7 +23,7 @@ public class AlphanumericTest {
 
     @Test
     public void givenUsingOwnImplementation() {
-        String generated = new Alphanumerical().generateCodeChallenge();
+        AuthTuple generated = new Alphanumerical().generateCodeChallenge();
         System.out.println(generated);
         Assert.assertNotNull("should not be null", generated);
     }

@@ -2,9 +2,11 @@ package type;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class OAuth2Context {
 
     private String csrf;
