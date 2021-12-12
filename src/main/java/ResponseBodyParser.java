@@ -1,3 +1,4 @@
+import type.Form;
 
 public class ResponseBodyParser {
 
@@ -11,16 +12,30 @@ public class ResponseBodyParser {
 						<input type="hidden" name="cancel" value="" id="form-input-cancel" />
      */
 
-    public String extractCSRF(String responseBody) {
+    String pattern = "<input type=\"hidden\" name=\"";
+
+    public static String extractCSRF(String responseBody) {
         String prefix = "input type=\"hidden\" name=\"_csrf\" value=\"";
         int index = responseBody.indexOf(prefix);
         return responseBody.substring(index + 40, index + 76);
     }
 
-    public String extractTransactionId(String responseBody) {
+    public static String extractTransactionId(String responseBody) {
         String prefix = "input type=\"hidden\" name=\"transaction_id\" value=\"";
         int index = responseBody.indexOf(prefix);
         return responseBody.substring(index + 49, index + 57);
+    }
+
+    public static Form getHtmlForm(String responseBody) {
+        return Form.builder()
+                .csrf(extractCSRF(responseBody))
+                .transactionId(extractTransactionId(responseBody))
+                .phase("authenticate")
+                .process("1")
+                .cancel("")
+                .identity("")
+                .credential("")
+                .build();
     }
 
 }

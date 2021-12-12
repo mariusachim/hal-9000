@@ -21,6 +21,13 @@ public class AlphanumericTest {
     }
 
     @Test
+    public void testStateGenerator() {
+        String state = Alphanumerical.generateState();
+        System.out.println(state);
+        Assert.assertEquals(22, state.length());
+    }
+
+    @Test
     public void givenUsingOwnImplementation() {
         String generated = new Alphanumerical().generateCodeChallenge();
         System.out.println(generated);

@@ -1,0 +1,934 @@
+{
+	"info": {
+		"_postman_id": "fbaba248-20b0-45fe-8efb-9afa616ac0e2",
+		"name": "tesla-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. GET authorize",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://auth.tesla.com/oauth2/v3/authorize?client_id=ownerapi&code_challenge=NTMwYzBmY2UyMWY2M2I4MTgwNDMwMjdkODZhM2Y2MDYzYmUwMjk2ZWYxNWZjODdmMWE4ZjJlOGMwNmVhMzg4OQ==&code_challenge_method=S256&redirect_uri=https://auth.tesla.com/void/callback&response_type=code&scope=openid email offline_access&state=123456",
+					"protocol": "https",
+					"host": [
+						"auth",
+						"tesla",
+						"com"
+					],
+					"path": [
+						"oauth2",
+						"v3",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "ownerapi"
+						},
+						{
+							"key": "code_challenge",
+							"value": "NTMwYzBmY2UyMWY2M2I4MTgwNDMwMjdkODZhM2Y2MDYzYmUwMjk2ZWYxNWZjODdmMWE4ZjJlOGMwNmVhMzg4OQ=="
+						},
+						{
+							"key": "code_challenge_method",
+							"value": "S256"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://auth.tesla.com/void/callback"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "scope",
+							"value": "openid email offline_access"
+						},
+						{
+							"key": "state",
+							"value": "123456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. obtain_authotization_code",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "identity",
+							"value": "mariusachim@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "credential",
+							"value": "Keeltes55",
+							"type": "text"
+						},
+						{
+							"key": "_csrf",
+							"value": "xgopV6rd-xb0CsAd8I005niceUvRcU0xaSkg",
+							"type": "text"
+						},
+						{
+							"key": "_phase",
+							"value": "authenticate",
+							"type": "text"
+						},
+						{
+							"key": "_process",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "transaction_id",
+							"value": "PuBYFVh6",
+							"type": "text"
+						},
+						{
+							"key": "cancel",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://auth.tesla.com/oauth2/v3/authorize?client_id=ownerapi&code_challenge=ZWM0YzIzZWI3YjBmNTE2ZjVkNTgwODdhMzllMmIyNjE5ZTI3MjFiOWVhM2M3MGYxN2FmMDFlYThiMTg4YmQ4NA==&code_challenge_method=S256&redirect_uri=https://auth.tesla.com/void/callback&response_type=code&scope=openid email offline_access&state=123",
+					"protocol": "https",
+					"host": [
+						"auth",
+						"tesla",
+						"com"
+					],
+					"path": [
+						"oauth2",
+						"v3",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "ownerapi"
+						},
+						{
+							"key": "code_challenge",
+							"value": "ZWM0YzIzZWI3YjBmNTE2ZjVkNTgwODdhMzllMmIyNjE5ZTI3MjFiOWVhM2M3MGYxN2FmMDFlYThiMTg4YmQ4NA=="
+						},
+						{
+							"key": "code_challenge_method",
+							"value": "S256"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://auth.tesla.com/void/callback"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "scope",
+							"value": "openid email offline_access"
+						},
+						{
+							"key": "state",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Bearer",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"grant_type\": \"authorization_code\",\n  \"client_id\": \"ownerapi\",\n  \"code\": \"8641f1f178d92e6a3024d1bfee9db0ee3c8224e0b66189ffde0ffad4ecb1\",\n  \"code_verifier\": \"hNxnbwOKVjwwDauILxcKjKvCrNsKxgwKWoExHmCrTjwhNxrCYdAhfSlNbQbLDhSbZFHgXJXVFbDIlQROFGxpFT\",\n  \"redirect_uri\": \"https://auth.tesla.com/void/callback\"\n}"
+				},
+				"url": {
+					"raw": "https://auth.tesla.com/oauth2/v3/token",
+					"protocol": "https",
+					"host": [
+						"auth",
+						"tesla",
+						"com"
+					],
+					"path": [
+						"oauth2",
+						"v3",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "access_token",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im9UaDR1ZXNoM2tlZXpvWDB1In0.eyJpc3MiOiJodHRwczovL2F1dGgudGVzbGEuY29tL29hdXRoMi92MyIsImF1ZCI6WyJodHRwczovL293bmVyLWFwaS50ZXNsYW1vdG9ycy5jb20vIiwiaHR0cHM6Ly9hdXRoLnRlc2xhLmNvbS9vYXV0aDIvdjMvdXNlcmluZm8iXSwiYXpwIjoib3duZXJhcGkiLCJzdWIiOiI4YTc0MDYzZC03NzFiLTRjYmUtYWZiOS0zYWQ5OGNmZjUzZjciLCJzY3AiOlsib3BlbmlkIiwiZW1haWwiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl0sImV4cCI6MTYxMjkxMDg0NSwiaWF0IjoxNjEyOTEwNTQ1LCJhdXRoX3RpbWUiOjE2MTI5MTAxNDN9.cIQl3Pgr5OvIC8R_wQCCOg4naLp2Sag_8JsetMxQ1nbugqIHWhvHIpbIcqZTjKfOWUgwtceIaWfJnFh5TfAgcIzihaHu5VFULLZUvz88M-LalL7lxp-FQVODAbeUYXIMGJGi0bRxtDjyZRl90fya2Y6tq_NvF4rdhEQJMWt1wzHOoBzNzsQ10gJBeuq6R8yJOLqlAajxeZYmNUhMnsgpNYPp90T9uboFa4I6znD_wPG_uUKBXX1guyuoqwhstiAn99-jk9A-fdtwPPyjDJEdHQzWtr-qDImmjwYPtoWP7HnnmP8_88XYBChh4ZeJsu3qQIOvhDAjbURQwnZs-RXiNw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"grant_type\": \"urn:ietf:params:oauth:grant-type:jwt-bearer\",\n  \"client_id\": \"81527cff06843c8634fdc09e8ac0abefb46ac849f38fe1e431c2ef2106796384\",\n  \"client_secret\": \"c7257eb71a564034f9419ee651c7d0e5f7aa6bfbd18bafb5c5c033b093bb2fa3\"\n}"
+				},
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET vehicles",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET vehicle_data",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/vehicle_data",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"vehicle_data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET data_request/charge_state",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/data_request/charge_state",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"data_request",
+						"charge_state"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET data_request/climate_state",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/data_request/climate_state",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"data_request",
+						"climate_state"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET data_request/drive_state",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/data_request/drive_state",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"data_request",
+						"drive_state"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET data_request/gui_settings",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/data_request/gui_settings",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"data_request",
+						"gui_settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET data_request/vehicle_state",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/data_request/vehicle_state",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"data_request",
+						"vehicle_state"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET data_request/vehicle_config",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/data_request/vehicle_config",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"data_request",
+						"vehicle_config"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET mobile_enabled",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/mobile_enabled",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"mobile_enabled"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET nearby_charging_sites",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/nearby_charging_sites",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"nearby_charging_sites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST command/flash_lights",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/command/flash_lights",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"command",
+						"flash_lights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST command/trigger_homelink",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/command/trigger_homelink",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"command",
+						"trigger_homelink"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST command/sun_roof_control",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/command/sun_roof_control",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"command",
+						"sun_roof_control"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST command/charge_port_door_open",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/command/charge_port_door_open",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"command",
+						"charge_port_door_open"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET users/service_scheduling_data",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/users/service_scheduling_data",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"users",
+						"service_scheduling_data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET users/referral_data",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/users/referral_data",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"users",
+						"referral_data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET messages",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/messages",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST command/door_unlock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/command/door_unlock",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"command",
+						"door_unlock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST command/door_lock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/command/door_lock",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"command",
+						"door_lock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST wake_up",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "qts-3c13da7324b0469ba885e8504e2381efecf2b174265372547d8f632dcd914962",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://owner-api.teslamotors.com/api/1/vehicles/34414290638659363/wake_up",
+					"protocol": "https",
+					"host": [
+						"owner-api",
+						"teslamotors",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"vehicles",
+						"34414290638659363",
+						"wake_up"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
