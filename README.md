@@ -1,3 +1,5 @@
+# ! out-of-date - not working any more
+
 # hal-9000
 
 ### Prerequisites:
